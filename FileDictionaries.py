@@ -18,12 +18,17 @@ startRow_dictionary: Dict[fileType, int] = { fileType.SAP9502 : 5,
                                             fileType.LastPlanA : 2,
                                             fileType.Weekly1508 : 2,
                                             fileType.SAP9502_WKLY: 5,
+                                            fileType.SAP9532_WKLY: 5,
                                             fileType.SAP9000_DLM: 5,
                                             fileType.HHBonus: 5,
-                                            fileType.TOPRSRollup: 2}
+                                            fileType.TOPRSRollup: 2,
+                                            fileType.DLM_BWHours_Period: 5,
+                                            fileType.DLM_BWHours_Weekly: 5,
+                                            fileType.DLM_BWDollars: 5,
+                                            fileType.T110 : 3,
+                                            fileType.DLM_Hierarchy_Eng: 3}
 
 XLsheetDictionary: Dict[fileType, str] = {  fileType.SAPHierarchy : 'Rollup for R3HIER E',
-                                            fileType.T110 : 'Hr by Period',
                                             fileType.YOYAdj : 'Summary_CDMP',
                                             fileType.FieldRollup : 'Field Rollup',
                                             fileType.TOPRSPlan : 'Target Hours',
@@ -34,4 +39,8 @@ XLsheetDictionary: Dict[fileType, str] = {  fileType.SAPHierarchy : 'Rollup for 
                                             fileType.WC2CC : 'Valid',
                                             fileType.LastPlanA : 'Depots',
                                             fileType.Weekly1508 : 'Weekly Data',
-                                            fileType.TOPRSRollup : 'Short TOPRS'}
+                                            fileType.TOPRSRollup : 'Short TOPRS',
+                                            fileType.DLM_Hierarchy_Eng : 'Rollup for R3HIER E'}
+
+T110sheetDictionary: Dict[str, str] = {'Hours' : 'Data_Hrs',
+                                       'Dollars' : 'Data_Dollars'}

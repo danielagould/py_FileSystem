@@ -106,13 +106,13 @@ class Ui_MainWindow(object):
 
     def setVariables(self):
         fileLocation = self.fileLocationBox.text()
-        fileLocation = 'C:\\1.WorkWorkWork\\8. Data' # testing
+        fileLocation = 'M:\\APP ZONE\\Direct Labour Model Sandbox\\p07\\MOPS\\Month End Process\\Source\\Others' # testing
         fileName = self.fileNameBox.text()
-        fileName = 'CC Rollups.xlsx'
+        fileName = 'R3HIER E.xls'
         currentYear = self.currentYearBox.text()
         paramFile = self.ParamTargetBox.text()
         fileType = FileEnums.fileType_dictionary[self.fileTypeComboBox.currentText()]
-        fileType = FileEnums.fileType.TOPRSRollup # testing
+        fileType = FileEnums.fileType.DLM_Hierarchy_Eng # testing
         if (len(fileLocation) > 0) or (len(fileName) > 0):
             try:
                 FileProcessor = fileProcessor(fileLocation, fileName, fileType, currentYear)

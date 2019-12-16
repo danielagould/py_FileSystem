@@ -41,6 +41,24 @@ class dataFilter:
                 newValues.append(currentRowNew)
         return newValues
 
+    def filter95xxWKLY_Custom(self):
+        newValues = []
+        for i in range(self.startRow, len(self.values)):
+            currentRow = self.values[i]
+            currentRowNew = []
+            if len(currentRow) > 0:
+                for k in range(0, 11):
+                    if "#" in str(currentRow[k]) and k == 4:
+                        currentRowNew.append(None)
+                    else:
+                        if k == 10:
+                            currentRowNew.append(self.convertToInt(currentRow[k][-2:]))
+                        else:
+                            currentRowNew.append(currentRow[k])
+                currentRowNew.append(self.correctNegative(self.removeComma(currentRow[11])))
+                newValues.append(currentRowNew)
+        return newValues
+
     def filterHHBonus(self):
         newValues = []
         for i in range(self.startRow, len(self.values)):
@@ -445,7 +463,7 @@ class dataFilter:
     def filterT008(self):
         newValues = []
         for i in range(self.startRow, len(self.values)):
-            currentRow = self.values [i]
+            currentRow = self.values[i]
             currentRowNew = []
             if len(currentRow) > 0:
                 currentRowNew.append(currentRow[0])
@@ -453,6 +471,27 @@ class dataFilter:
                 for j in range(2, 7):
                     currentRowNew.append(self.convertToFloat(self.correctNegative(self.removeComma(currentRow[j]))))
                 newValues.append(currentRowNew)
+        return newValues
+
+    def filterHier(self):
+        newValues = []
+        for i in range(self.startRow, len(self.values)):
+            currentRow = self.values[i]
+            currentRowNew = []
+            if len(currentRow) > 0:
+                if currentRow[5][:9] == 'SHN102910':
+                    if 'SHN' in str(currentRow[0]):  #CC
+                        currentRowNew.append(currentRow[0][:9])
+                    else:
+                        currentRowNew.append(currentRow[0])
+                    currentRowNew.append(currentRow[1])      # CCName
+                    currentRowNew.append(currentRow[5][:9])  # SVP
+                    currentRowNew.append(currentRow[6][:9])  # VP
+                    currentRowNew.append(currentRow[7][:9])  # GM
+                    currentRowNew.append(currentRow[8][:9])  # Dir
+                    currentRowNew.append(currentRow[9][:9])  # Mgr
+                    currentRowNew.append(currentRow[10][:9])  # Support
+                    newValues.append(currentRowNew)
         return newValues
 
     def removeComma(self, currentValue):
